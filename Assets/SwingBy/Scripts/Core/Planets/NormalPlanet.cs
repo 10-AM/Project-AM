@@ -2,6 +2,8 @@
 using UnityEngine;
 using AM.Common.Event;
 using UnityEditor;
+using AM.Util;
+using AM.SwingBy.Core.Managers;
 
 namespace AM.SwingBy.Core.Planets
 {
@@ -45,11 +47,21 @@ namespace AM.SwingBy.Core.Planets
             Center = transform.position;
         }
 
+        private void OnEnable()
+        {
+            PlanetManager.Add(this);
+        }
+
+        private void OnDisable()
+        {
+            PlanetManager.Remove(this);
+        }
+
         public void UpdateGravity(IGravityObject gravityObject)
         {
             var gravityObjToPlanet = (transform.position - gravityObject.CurrentPosition);
             // 중력 영향 범위 내에 gravityObject가 있다면
-            if (gravityObjToPlanet.sqrMagnitude <= (GravityRange * GravityRange))
+            if (gravityObjToPlanet.IsInDistance(GravityRange))
             {
                 
             }
