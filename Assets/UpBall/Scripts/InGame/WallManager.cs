@@ -85,11 +85,11 @@ namespace AM.UpBall.InGame
 
         private float GetWallMinPositionX(int count)
         {
-            return -1.55f;
+            return -2.325f;
         }
         private float GetWallMaxPositionX(int count)
         {
-            return 1.55f + 0.5f * (5 - count);
+            return 2.325f + 0.5f * (5 - count);
         }
 
         public void HideGround()

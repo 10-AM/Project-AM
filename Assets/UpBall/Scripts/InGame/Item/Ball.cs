@@ -90,7 +90,7 @@ namespace AM.UpBall.InGame.Item
                 }
             }
 
-            if (transform.position.y <= -6.2f)
+            if (transform.position.y <= -9.3f)
             {
                 ClearPlayer();
             }

@@ -61,7 +61,7 @@ namespace AM.UpBall.InGame.Item
             {
                 transform.localPosition += new Vector3(0f, LevelingData.moveSpeed * Time.deltaTime, 0f);
 
-                if (transform.localPosition.y <= -5.32f)
+                if (transform.localPosition.y <= -7.98f)
                 {
                     if (WallManager.instance.sprGround.color.a != 0f)
                     {
