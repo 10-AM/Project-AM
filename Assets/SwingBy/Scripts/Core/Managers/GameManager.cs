@@ -17,7 +17,14 @@ namespace AM.SwingBy.Core.Managers
             if(Instance == null)
             {
                 Instance = this;
-            }  
+            } 
+
+
+        }
+
+        private void OnDestroy()
+        {
+            Instance = null;
         }
 
         private void Update()
@@ -30,9 +37,18 @@ namespace AM.SwingBy.Core.Managers
         /// </summary>
         private void FixedUpdate()
         {
-            for (int i = 0; i < GravityObjectManager.GravityObjectCount; ++i)
+            for (int planetIdx = 0; planetIdx < PlanetManager.PlanetCount; ++planetIdx)
             {
-                GravityObjectManager.Get(i).UpdatePhysics();
+                var planet = PlanetManager.Get(planetIdx);
+                for (int i = 0; i < GravityObjectManager.GravityObjectCount; ++i)
+                {
+                    var gravityObject = GravityObjectManager.Get(i);
+                    if (!object.ReferenceEquals(gravityObject, null))
+                    {
+                        gravityObject.UpdatePhysics();
+                        planet.UpdateGravity(gravityObject);
+                    }
+                }
             }
         }
     }

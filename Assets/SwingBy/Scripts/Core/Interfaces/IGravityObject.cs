@@ -16,8 +16,8 @@ namespace AM.SwingBy.Core.Interfaces
         void UpdatePhysics();
         
         /// <summary>
-        /// 행성에 의한 중력 업데이트
+        /// 행성에 의한 물리 업데이트
         /// </summary>
-        void UpdateGravity(Vector3 externalGravity);
+        void UpdatePhysics(Vector2 externalGravity);
     }
 }

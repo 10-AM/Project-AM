@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41dd146b8600cc45a201b0607ad9432, type: 3}
   m_Name: EnvironmentData
   m_EditorClassIdentifier: 
-  Friction: 0.003
+  Friction: 0.3

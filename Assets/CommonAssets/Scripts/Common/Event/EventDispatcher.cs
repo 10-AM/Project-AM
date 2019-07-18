@@ -42,7 +42,6 @@ namespace AM.Common.Event
 
             return handlerList;
         }
-
         /// <summary>
         /// 리스너 추가
         /// </summary>
