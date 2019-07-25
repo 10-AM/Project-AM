@@ -15,6 +15,7 @@ namespace AM.UpBall.InGame.Item
 {
     public class Ball : MonoBehaviour
     {
+        public Animator animator;
         public Rigidbody2D myRigidbody;
         public GameObject objSlowDuration;
         public GameObject objTrailRender;
@@ -43,11 +44,22 @@ namespace AM.UpBall.InGame.Item
             DisableDurationEdge();
             parentMoveObj = GameObject.Find("G_InGameObject");
             parentObj = GameObject.Find("G_Ball");
+            animator.SetTrigger("stop");
         }
 
         // Update is called once per frame
         private void Update()
         {
+            // 1보다 크면 오른쪽보고 있음
+            if(myRigidbody.velocity.x >= 1f)
+            {
+                transform.localScale = new Vector3(-1f, 1f, 1f);
+            }
+            // 작으면 왼쪽
+            else if (myRigidbody.velocity.x <= -1f)
+            {
+                transform.localScale = new Vector3(1f, 1f, 1f);
+            }
             _currentMovePower = myRigidbody.velocity.magnitude;
             _currentMovePowerVector = myRigidbody.velocity;
             if (LevelingData.IsDie || LevelingData.IsExit)
@@ -126,6 +138,7 @@ namespace AM.UpBall.InGame.Item
         {
             if (mouseEvent == 0) // up
             {
+                animator.SetTrigger("jump");
                 DisableDurationEdge();
                 Sound.instance.PlayEffSound(SOUND.S_JUMP);
 
@@ -311,6 +324,8 @@ namespace AM.UpBall.InGame.Item
                         myRigidbody.velocity = Vector2.zero;
 
                     _trailCrt = StartCoroutine(Tween.instance.DelayMethod(0.3f, DisableTrail));
+
+                    animator.SetTrigger("stop");
                 }
             }
         }

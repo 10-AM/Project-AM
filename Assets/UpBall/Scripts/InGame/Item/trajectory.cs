@@ -98,8 +98,6 @@ namespace AM.UpBall.InGame.Item
 
                     temp = reflectVector;
 
-                    Debug.Log("dx dy : " + new Vector2(Mathf.Abs(dx), Mathf.Abs(dy)));
-
                     SubsetTrajectoryPoints(pos, reflectVector, tragectoryNum, i);
                     return;
                 }
